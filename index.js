@@ -7,6 +7,7 @@ const app = express();
 const userRoute = require("./routes/user");
 
 app.use(cors());
+app.use(express.json());
 dotenv.config();
 
 //Routes
