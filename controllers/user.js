@@ -16,14 +16,19 @@ exports.register = async (req, res) => {
       bday,
     } = req.body;
 
-    // if (!validateEmail(email)) {
-    //   return res.status(400).json({ message: "Invalid email address" });
-    // }
+    if (!validateEmail(email)) {
+      return res.status(400).json({ message: "Invalid email address" });
+    }
     let check = await User.findOne({ email });
     if (check) {
       return res
         .status(400)
         .json({ message: "This email is already registered" });
+    }
+
+    let user_name = await User.findOne({ username });
+    if (user_name) {
+      return res.status(400).json({ message: "username is already exits" });
     }
 
     if (!validateLength(first_name, 3, 30)) {

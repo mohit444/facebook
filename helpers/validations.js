@@ -1,7 +1,7 @@
 exports.validateEmail = (email) => {
   return String(email)
     .toLowerCase()
-    .match(/^([a-z\d\.-]+)@([a-z\-]+)\.([a-z]{2-12})(\.[a-z]{2-12})?$/);
+    .match(/([a-z0-9_\-\.]+)@([a-z]+)\.([a-z]{2,4})/);
 };
 
 exports.validateLength = (text, min, max) => {
